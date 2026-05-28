@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <title>My WebGIS App</title>
+</head>
+
+
+<body>
+  <!-- 注意：本项目通过 main.js 全局设置 apiKey   -->
+  <arcgis-map id="mapEl" basemap="arcgis/dark-gray" center="-100,40" zoom="4">
+    <arcgis-zoom slot="top-left"></arcgis-zoom>
+    <arcgis-search slot="top-right"></arcgis-search>
+    <arcgis-legend slot="bottom-right"></arcgis-legend>
+    <arcgis-sketch slot="top-right" layer-id="sketchLayer">
+    </arcgis-sketch>
+  </arcgis-map>
+
+  <!-- 新增：浮动查询面板 -->
+  <div id="queryPanel" style="
+    position: absolute; top: 80px; right: 20px;
+    background: white; padding: 16px 20px; border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 99;
+    font-family: 'Microsoft YaHei'; min-width: 240px;">
+
+    <div style="font-weight: bold; margin-bottom: 8px; color: #1F4E79;">
+      属性查询 · 震级阈值
+    </div>
+
+    <input type="range" id="magSlider" min="2.5" max="7.0" step="0.1" value="4.5" style="width: 100%;">
+
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666;">
+      <span>≥ 2.5</span>
+      <span id="magValue" style="font-weight: bold; color: #B91C1C;">M ≥ 4.5</span>
+      <span>7.0</span>
+    </div>
+
+    <div id="resultText" style="margin-top: 10px; font-size: 13px; color: #2E8B57;">
+      符合条件: --
+    </div>
+
+    <div style="margin-top: 12px; display: flex; gap: 6px;">
+      <button id="btnFilter" style="flex: 1; padding: 6px;
+              background: #2E8B57; color: white; border: none; border-radius: 4px;">
+        用 FeatureFilter
+      </button>
+      <button id="btnDef" style="flex: 1; padding: 6px;
+              background: #1F4E79; color: white; border: none; border-radius: 4px;">
+        用 definitionExpression
+      </button>
+      <button id="btnReset" style="padding: 6px;
+              background: #6B7280; color: white; border: none; border-radius: 4px;">
+        重置
+      </button>
+    </div>
+
+  </div>
+
+  <div>update1</div>
+  <div>update2</div>
+  <div>update3</div>
+  <div>update4</div>
+
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
